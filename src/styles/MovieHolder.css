@@ -1,0 +1,57 @@
+@import url("https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300..800;1,300..800&display=swap");
+.flexCont-simp {
+  display: flex;
+  align-items: center;
+}
+
+.ml-sm {
+  margin-left: 1rem;
+}
+
+.MovieHolder-cont {
+  background-color: #dda15e;
+  margin-bottom: 1rem;
+  border-radius: 11px;
+
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+}
+
+.img--cont {
+  margin-right: 1.2rem;
+}
+.movie-poster {
+  width: 64px;
+  height: 64px;
+  border-radius: 9px;
+  margin-left: 0.8rem;
+  object-fit: contain;
+}
+.movie--name {
+  font-weight: 500;
+  font-family: "Open Sans", serif;
+}
+.director--name {
+  font-size: 1.4rem;
+}
+
+/*Movielist styles*/
+
+.BtnContainer {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  margin-bottom: 1rem;
+}
+.close--btn {
+  border: none;
+  background: #22de43;
+  border-radius: 11px;
+  color: #fff;
+  font-weight: 500;
+  font-size: 2.4rem;
+  transition: all 0.3s ease-in;
+  width: 28px;
+  height: 28px;
+}

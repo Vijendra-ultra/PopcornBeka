@@ -1,0 +1,9 @@
+.flexCont {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.gap-sm {
+  gap: 1.2rem;
+}

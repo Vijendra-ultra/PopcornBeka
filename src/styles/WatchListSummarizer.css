@@ -1,0 +1,19 @@
+.WatchListSummarize--cont {
+  height: 4.8rem;
+  color: #fff;
+  margin-bottom: 1.2rem;
+  background-color: #c1121f;
+  padding: 1.8rem 2rem;
+}
+.flexCont-simple {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.WatchListSummarize--cont h1 {
+  font-size: 2rem;
+  text-align: center;
+}
+.data {
+  margin-left: 1.2rem;
+}
