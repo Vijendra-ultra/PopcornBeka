@@ -1,10 +1,16 @@
 import React from "react";
 import "./styles/Navbar.css";
+
 export default function Navbar({
   setSearchMovies,
   searchMovies,
   sendQueryFunc,
+  MovieDatas,
 }) {
+  const ResultTextStyles = {
+    color: "#fff",
+    fontSize: "2rem",
+  };
   return (
     <nav className="Navbar">
       <h1>🍿PopcornBeka</h1>
@@ -20,6 +26,7 @@ export default function Navbar({
           submit
         </button>
       </div>
+      <h2 style={ResultTextStyles}>Found {MovieDatas.length} results</h2>
     </nav>
   );
 }

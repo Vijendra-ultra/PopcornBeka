@@ -3,40 +3,27 @@ import React, { useState } from "react";
 import MovieHolder from "./MovieHolder";
 import "./styles/MovieHolder.css";
 import LoadScreener from "./miniComps/LoadScreener";
+import BoxContainer from "./BoxContainer";
+import CloseAndOpenBtn from "./miniComps/CloseAndOpenBtn";
+import MovieListRenderer from "./miniComps/MovieListRenderer";
+import ErroDisplayer from "./miniComps/ErrorDisplayer";
 
-export default function Movielist({ MovieDatas, isLoading }) {
+export default function Movielist({ MovieDatas, isLoading, ErrorMessage }) {
   const [isOpen, setIsOpen] = useState(true);
-
+  const renderCondition = isOpen;
   return (
-    <div className="container">
+    <BoxContainer>
       {isLoading ? (
         <LoadScreener />
+      ) : !MovieDatas || MovieDatas.length < 1 ? (
+        <ErroDisplayer ErrorMessage={ErrorMessage} />
       ) : (
         <>
-          <div className="BtnContainer">
-            <button
-              style={isOpen ? { fontSize: "2.5rem" } : {}}
-              className="close--btn"
-              onClick={() => setIsOpen((prev) => !prev)}
-            >
-              {!isOpen ? "+" : "-"}
-            </button>
-          </div>
+          <CloseAndOpenBtn isOpen={isOpen} setIsOpen={setIsOpen} />
 
-          {isOpen && MovieDatas.length > 1
-            ? MovieDatas.map((MovieData) => (
-                <MovieHolder MovieData={MovieData} key={MovieData.imdbID}>
-                  <span className="movie--name" style={{ fontSize: "1.9rem" }}>
-                    {MovieData.Title}
-                  </span>
-                  <div>
-                    <p className="director--name">{MovieData.Year}</p>
-                  </div>
-                </MovieHolder>
-              ))
-            : null}
+          {renderCondition && <MovieListRenderer MovieDatas={MovieDatas} />}
         </>
       )}
-    </div>
+    </BoxContainer>
   );
 }
