@@ -1,5 +1,5 @@
-import React, { useState } from "react";
-
+import React, { useContext } from "react";
+import { StarRatingContext } from "../Watchlist";
 const starHolder = {
   display: "flex",
   justifyContent: "center",
@@ -19,18 +19,31 @@ const svgSvgStyles = {
   cursor: "pointer",
 };
 
-export default function StarRating() {
+export default function StarRating({ heightAndwidth = 36, maxLength = 1 }) {
+  const { rating, setRating, tempRating, setTempRating } =
+    useContext(StarRatingContext);
   return (
     <>
-      <StarRatingHolder heightAndwidth={36} />
+      <StarRatingHolder
+        rating={rating}
+        setRating={setRating}
+        tempRating={tempRating}
+        setTempRating={setTempRating}
+        maxLength={maxLength}
+        heightAndwidth={heightAndwidth}
+      />
     </>
   );
 }
 
-function StarRatingHolder({ maxLength = 1, heightAndwidth }) {
-  const [rating, setRating] = useState(0);
-  const [tempRating, setTempRating] = useState(0);
-
+function StarRatingHolder({
+  maxLength,
+  heightAndwidth,
+  rating,
+  setRating,
+  tempRating,
+  setTempRating,
+}) {
   const RatingsUpdater = (index) => {
     setRating(index);
   };

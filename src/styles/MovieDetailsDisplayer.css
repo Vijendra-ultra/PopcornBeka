@@ -1,0 +1,45 @@
+.movie--displayer {
+  padding: 1.2rem 1.6rem;
+  background-color: #fdf0d5;
+  border-radius: 9px;
+  position: relative;
+}
+.movie--img {
+  width: 18rem;
+  height: auto;
+}
+.header--data {
+  width: 24rem;
+  padding: 0 1.2rem;
+}
+.data-movie {
+  font-style: oblique;
+  font-size: 1.6rem;
+}
+
+.revert--btn {
+  background: #fefae0;
+  border: none;
+
+  border-radius: 9px;
+  position: absolute;
+  right: 0;
+  margin-right: 5px;
+}
+
+.star--rating-cont {
+  padding: 1.6rem 2.4rem;
+  background-color: #386641;
+  color: #fff;
+  border-radius: 11px;
+  width: 30.3rem;
+  margin: 1.2rem 0;
+}
+
+.watchlistAdder--btn {
+  padding: 10px 20px;
+  background: #fb8500;
+  border: none;
+  font-size: 1.6rem;
+  border-radius: 11px;
+}

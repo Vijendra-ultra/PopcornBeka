@@ -1,6 +1,6 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
+import { MovieDataContext } from "./App";
 
-import MovieHolder from "./MovieHolder";
 import "./styles/MovieHolder.css";
 import LoadScreener from "./miniComps/LoadScreener";
 import BoxContainer from "./BoxContainer";
@@ -8,7 +8,9 @@ import CloseAndOpenBtn from "./miniComps/CloseAndOpenBtn";
 import MovieListRenderer from "./miniComps/MovieListRenderer";
 import ErroDisplayer from "./miniComps/ErrorDisplayer";
 
-export default function Movielist({ MovieDatas, isLoading, ErrorMessage }) {
+export default function Movielist({ isLoading, ErrorMessage }) {
+  const { MovieDatas } = useContext(MovieDataContext);
+
   const [isOpen, setIsOpen] = useState(true);
   const renderCondition = isOpen;
   return (
@@ -21,7 +23,9 @@ export default function Movielist({ MovieDatas, isLoading, ErrorMessage }) {
         <>
           <CloseAndOpenBtn isOpen={isOpen} setIsOpen={setIsOpen} />
 
-          {renderCondition && <MovieListRenderer MovieDatas={MovieDatas} />}
+          {renderCondition && (
+            <MovieListRenderer MovieDatastoRender={MovieDatas} />
+          )}
         </>
       )}
     </BoxContainer>

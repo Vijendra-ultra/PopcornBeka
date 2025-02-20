@@ -1,17 +1,18 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, createContext } from "react";
 import "./App.css";
 import Navbar from "./Navbar";
 import Watchlist from "./Watchlist";
 import Movielist from "./Movielist";
 
 const KEY = "47167ec0";
-
+export const MovieDataContext = createContext();
 export default function App() {
   const [searchMovies, setSearchMovies] = useState("");
   const [query, setQuery] = useState("Inception");
   const [MovieDatas, setMovieDatas] = useState("");
   const [Message, setErrorMessage] = useState("");
   const [isLoading, setIsLoading] = useState(true);
+  const [selectedId, setSelectedId] = useState(null);
 
   useEffect(() => {
     async function movieLoader() {
@@ -45,6 +46,12 @@ export default function App() {
     setSearchMovies("");
   };
 
+  const MovieIdSelector = (id) => {
+    setSelectedId(id);
+  };
+  const selectedIdremover = () => {
+    setSelectedId(null);
+  };
   return (
     <>
       <div className="header">
@@ -55,15 +62,20 @@ export default function App() {
           MovieDatas={MovieDatas}
         />
       </div>
-      <div className="flexCont gap-sm">
-        {
+      <div className="flexCont gap-sm ">
+        <MovieDataContext.Provider value={{ MovieDatas, MovieIdSelector }}>
           <Movielist
             isLoading={isLoading}
             ErrorMessage={Message}
             MovieDatas={MovieDatas}
           />
-        }
-        <Watchlist />
+
+          <Watchlist
+            MovieDatas={MovieDatas}
+            selectedId={selectedId}
+            selectedIdremover={selectedIdremover}
+          />
+        </MovieDataContext.Provider>
       </div>
     </>
   );
